@@ -10,27 +10,22 @@
 
 ## About
 
-treee is intended for use as an auxiliary window for software development.
+treee is intended for use as an auxiliary window for software development.  
+Use it to keep track of the relevant parts of your project structure.
 
-- Use it to keep track of the relevant parts of your project structure
-- Or use it as a `tree` replacement for general file browsing.
-
-treee
-
+treee  
 - provides a live view of any number of directory trees
-- optionally interfaces with libgit2 by default to skip gitignored paths for each tree
+- interfaces with libgit2 to skip gitignored paths for each tree
 - allows for manual pattern match exclusions
 - skips hidden files by default
-- is multi-threaded and fast
 
-![example](./.assets/tree.example.png)
-![showhidden.example](./.assets/tree_showhidden.example.png)
+![](./.assets/demo.gif)
 
 ## Requirements
 
 - GNU/Linux
-- >= C++17 (tested with Clang 10.0.0, Clang 11.0.0, GCC 10.2.1, and GCC 11.0.0)
-- libgit2 [optional; compile with `cmake .. -DTREEE\_NO\_GIT=ON` to disable]
+- \>= C++17 (tested with Clang 10.0.0, Clang 11.0.0, GCC 10.2.1, and GCC 11.0.0)
+- libgit2 [optional; compile with `cmake .. -DTREEE_NO_GIT=ON` to disable]
 - ncurses
 - pthread
 - CMake >=3.0
@@ -57,19 +52,23 @@ treee . some_dir ../another_dir
 treee -I thirdparty|assets
 ```
 
-each directory argument provided
-
 ## Controls
 
 `h`, `j`, `k`, `l` for motion
 
 _[hold shift for fast motion]_
 
-press `.` to toggle hidden file display
-press `g` to toggle gitignored file display
-press `i` to toggle pattern-ignored file display
+press `.` to toggle hidden file display  
+press `g` to toggle gitignored file display  
+press `i` to toggle pattern-ignored file display  
 
 press `q` to exit
+
+## TODO
+
+- improve colors; vary according to file type
+- improve multithreading mutex efficiency
+- extend to Windows; provide replacement for -lpthread
 
 ## Contribution
 

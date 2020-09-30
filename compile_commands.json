@@ -3,22 +3,19 @@
         "arguments": [
             "/usr/local/bin/c++",
             "-c",
-            "CMakeCXXCompilerId.cpp"
-        ],
-        "directory": "/home/user/projects/treee/build/CMakeFiles/3.17.4/CompilerIdCXX",
-        "file": "CMakeCXXCompilerId.cpp"
-    },
-    {
-        "arguments": [
-            "/usr/local/bin/c++",
-            "-c",
-            "-v",
+            "-I/home/user/projects/treee/src",
+            "-I/home/user/projects/treee/ext/ccutl/include",
+            "-O3",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-pedantic",
             "-o",
-            "CMakeFiles/cmTC_ae300.dir/CMakeCXXCompilerABI.cpp.o",
-            "../../../../../../../usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
+            "CMakeFiles/treee.dir/src/treee/disp.cc.o",
+            "../src/treee/disp.cc"
         ],
-        "directory": "/home/user/projects/treee/build/CMakeFiles/CMakeTmp",
-        "file": "../../../../../../../usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
+        "directory": "/home/user/projects/treee/build",
+        "file": "../src/treee/disp.cc"
     },
     {
         "arguments": [
@@ -26,15 +23,11 @@
             "-c",
             "-I/home/user/projects/treee/src",
             "-I/home/user/projects/treee/ext/ccutl/include",
-            "-I/home/user/projects/treee/ext/ccutl/libs/pputl/include",
-            "-std=c++20",
+            "-O3",
+            "-std=c++17",
             "-Wall",
-            "-Werror",
-            "-Wno-c++98-compat",
-            "-Wno-gnu-zero-variadic-macro-arguments",
-            "-Wno-c++98-compat-pedantic",
-            "-Wno-documentation",
-            "-Wno-documentation-unknown-command",
+            "-Wextra",
+            "-pedantic",
             "-o",
             "CMakeFiles/treee.dir/src/treee/git.cc.o",
             "../src/treee/git.cc"
@@ -46,17 +39,25 @@
         "arguments": [
             "/usr/local/bin/c++",
             "-c",
+            "-v",
+            "-o",
+            "CMakeFiles/cmTC_5bdae.dir/CMakeCXXCompilerABI.cpp.o",
+            "../../../../../../../usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
+        ],
+        "directory": "/home/user/projects/treee/build/CMakeFiles/CMakeTmp",
+        "file": "../../../../../../../usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
+    },
+    {
+        "arguments": [
+            "/usr/local/bin/c++",
+            "-c",
             "-I/home/user/projects/treee/src",
             "-I/home/user/projects/treee/ext/ccutl/include",
-            "-I/home/user/projects/treee/ext/ccutl/libs/pputl/include",
-            "-std=c++20",
+            "-O3",
+            "-std=c++17",
             "-Wall",
-            "-Werror",
-            "-Wno-c++98-compat",
-            "-Wno-gnu-zero-variadic-macro-arguments",
-            "-Wno-c++98-compat-pedantic",
-            "-Wno-documentation",
-            "-Wno-documentation-unknown-command",
+            "-Wextra",
+            "-pedantic",
             "-o",
             "CMakeFiles/treee.dir/src/treee/root.cc.o",
             "../src/treee/root.cc"
@@ -70,20 +71,43 @@
             "-c",
             "-I/home/user/projects/treee/src",
             "-I/home/user/projects/treee/ext/ccutl/include",
-            "-I/home/user/projects/treee/ext/ccutl/libs/pputl/include",
-            "-std=c++20",
+            "-O3",
+            "-std=c++17",
             "-Wall",
-            "-Werror",
-            "-Wno-c++98-compat",
-            "-Wno-gnu-zero-variadic-macro-arguments",
-            "-Wno-c++98-compat-pedantic",
-            "-Wno-documentation",
-            "-Wno-documentation-unknown-command",
+            "-Wextra",
+            "-pedantic",
+            "-o",
+            "CMakeFiles/treee.dir/src/treee/ncurses.cc.o",
+            "../src/treee/ncurses.cc"
+        ],
+        "directory": "/home/user/projects/treee/build",
+        "file": "../src/treee/ncurses.cc"
+    },
+    {
+        "arguments": [
+            "/usr/local/bin/c++",
+            "-c",
+            "-I/home/user/projects/treee/src",
+            "-I/home/user/projects/treee/ext/ccutl/include",
+            "-O3",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-pedantic",
             "-o",
             "CMakeFiles/treee.dir/src/main.cc.o",
             "../src/main.cc"
         ],
         "directory": "/home/user/projects/treee/build",
         "file": "../src/main.cc"
+    },
+    {
+        "arguments": [
+            "/usr/local/bin/c++",
+            "-c",
+            "CMakeCXXCompilerId.cpp"
+        ],
+        "directory": "/home/user/projects/treee/build/CMakeFiles/3.17.4/CompilerIdCXX",
+        "file": "CMakeCXXCompilerId.cpp"
     }
 ]
