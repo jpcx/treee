@@ -21,7 +21,7 @@
 
 cmake_minimum_required(VERSION 3.0)
 project(treee
-        VERSION 0.2.0
+        VERSION 0.2.1
         DESCRIPTION "an interactive file tree viewer"
         HOMEPAGE_URL "https://github.com/jpcx/treee"
         LANGUAGES CXX)
