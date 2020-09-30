@@ -24,7 +24,7 @@ treee
 ## Requirements
 
 - GNU/Linux
-- \>= C++17 (tested with Clang 10.0.0, Clang 11.0.0, GCC 10.2.1, and GCC 11.0.0)
+- \>= C++17 (tested with Clang 10.0.0, Clang 12.0.0, GCC 10.2.1, and GCC 11.0.0)
 - libgit2 [optional; compile with `cmake .. -DTREEE_NO_GIT=ON` to disable]
 - ncurses
 - pthread
