@@ -1,84 +1,45 @@
-#   - - - - - - - - - - - - -    configuration     - - - - - - - - - - - - -   #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#    _
+#   | |_ _ __ ___  ___  ___   treee: an interactive file tree viewer
+#   | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020 Justin Collier
+#   | |_| | |  __/  __/  __/
+#    \__|_|  \___|\___|\___|  - - - - - - - - - - - - - - - - - -
+# 
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the internalied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-BIN = treee
-PREFIX = /usr/local
+MAKEFLAGS += --no-print-directory
 
-LIBS = -lncurses
+all: build/treee
 
-EXTDIR = ext
-INCDIR = include
-SRCDIR = src
+build:
+	mkdir -p $@
+	cmake -B$@
 
-BINDIR = .bin
-OBJDIR = .obj
-DEPDIR = .dep
+build/treee: build $(shell find src -name *.cc) $(shell find src -name *.h)
+	cmake --build $< --target treee
 
-SRC = disp.c \
-      file.c \
-      main.c
+run: build/treee
+	./build/treee .
 
-CFLAGS  = -std=gnu99     \
-					-g             \
-					-pedantic      \
-					-Wall          \
-					-I/usr/include \
-					-I${INCDIR}    \
-					-I${EXTDIR}
-LDFLAGS = ${LIBS}
-
-#   - - - - - - - - - - - - - - -    phony   - - - - - - - - - - - - - - - -   #
-
-all: ${BINDIR}/${BIN}
-
-run: ${BINDIR}/${BIN}
-	./${BINDIR}/${BIN}
-
-install: ${BINDIR}/${BIN}
-	cp $< ${PREFIX}/bin
+install: build
+	cmake --install $<
 
 uninstall:
-	rm -f ${PREFIX}/bin/${BIN}
+	${RM} $(shell cat build/install_manifest.txt)
 
 clean:
-	rm -rf ./${BINDIR} ./${OBJDIR} ./${DEPDIR}
+	${RM} -r build
 
-.PHONY: all run clean
-
-#   - - - - - - - - - - - - - - -   objects    - - - - - - - - - - - - - - -   #
-
-vpath %.c ${SRCDIR}
-
-OBJ = $(patsubst %.c,${OBJDIR}/%.o,$(SRC))
-
-${OBJ}: | ${OBJDIR}
-
-${OBJDIR}:
-	@mkdir -p $@
-
-${OBJDIR}/%.o: %.c
-	${CC} ${CFLAGS} -c $< -o $@
-
-#   - - - - - - - - - - - - - - -    binary    - - - - - - - - - - - - - - -   #
-
-${BINDIR}:
-	@mkdir -p $@
-
-${BINDIR}/${BIN}: ${BINDIR} ${OBJ} ${INC}
-	${CC} -o $@ ${OBJ} ${LDFLAGS}
-	@chmod 755 $@
-
-#   - - - - - - - - - - - - - -   dependencies   - - - - - - - - - - - - - -   #
-
-$(patsubst %.c,${DEPDIR}/%.d,$(SRC)): | ${DEPDIR}
-
-${DEPDIR}:
-	@mkdir -p $@
-
-${DEPDIR}/%.d: %.c
-	@${CC} ${CFLAGS}                          \
-    -MF"$@" -MG -M -MP                      \
-    -MT"$@"                                 \
-    -MT"$(patsubst %.c,${DEPDIR}/%.o,${<})" \
-    "$<"
-
-include $(patsubst %.c,${DEPDIR}/%.d,$(SRC))
+.PHONY: all run install uninstall clean

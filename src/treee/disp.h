@@ -2,14 +2,14 @@
 #define TREEE_DISP_H_INCLUDED
 /* /////////////////////////////////////////////////////////////////////////////
 //   _
-//  | |_ _ __ ___  ___  ___   treee: interactive file tree viewer [0.1.0]
+//  | |_ _ __ ___  ___  ___   treee: an interactive file tree viewer
 //  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020 Justin Collier
 //  | |_| | |  __/  __/  __/
 //   \__|_|  \___|\___|\___|  - - - - - - - - - - - - - - - - - -
 //
 //    This program is free software: you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation, either version 3 of the License, or
+//    the Free Software Foundation, either version 2 of the License, or
 //    (at your option) any later version.
 //
 //    This program is distributed in the hope that it will be useful,
@@ -21,26 +21,34 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.   ///
 ///////////////////////////////////////////////////////////////////////////// */
 
-#include "file.h"
+#include <string>
 
-#define PAIR_CYAN    1
-#define PAIR_MAGENTA 2
-#define PAIR_GREEN   3
-#define PAIR_ERROR   4
+#include "treee/root.h"
+#include "treee/settings.h"
 
-typedef struct window {
-  long x;
-  long y;
-  int showhidden;
-} view;
+namespace treee {
 
-void
-printtree(file *node, long *ln, view *win, long *max_x);
+using std::string;
 
-void
-initcurses();
+class disp {
+ public:
+  disp()             = default;
+  disp(const disp &) = delete;
+  disp(disp &&)      = delete;
+  ~disp()            = default;
 
-void
-destroycurses();
+  void
+  repaint(settings &s, const vector<root> &roots);
+  bool
+  check_input(settings &s, vector<root> &roots);
+
+ private:
+  int winx_{0};
+  int winy_{0};
+  int view_cols_{0};
+  int lines_{0};
+};
+
+} // namespace treee
 
 #endif
