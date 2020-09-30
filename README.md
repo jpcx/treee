@@ -15,7 +15,7 @@ Use it to keep track of the relevant parts of your project structure.
 
 treee  
 - provides a live view of any number of directory trees
-- interfaces with libgit2 to skip gitignored paths for each tree
+- links with libgit2 to skip gitignored paths for each tree
 - allows for manual pattern match exclusions
 - skips hidden files by default
 
