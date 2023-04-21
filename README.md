@@ -64,7 +64,7 @@ _[hold shift for fast motion]_
 press `.` to toggle hidden file display  
 press `g` to toggle gitignored file display  
 press `i` to toggle pattern-ignored file display  
-press `+` to increase descent level
+press `+` to increase descent level  
 press `-` to decrease descent level
 
 press `q` to exit
