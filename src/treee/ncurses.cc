@@ -40,7 +40,7 @@ static struct ncurses {
       start_color();
       use_default_colors();
       init_pair(PAIR_CYAN, COLOR_CYAN, -1);
-      init_pair(PAIR_MAGENTA, COLOR_MAGENTA, -1);
+      init_pair(PAIR_BLACK, COLOR_BLACK, -1);
       init_pair(PAIR_GREEN, COLOR_GREEN, -1);
       init_pair(PAIR_ERROR, COLOR_WHITE, COLOR_RED);
     }

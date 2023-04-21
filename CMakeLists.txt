@@ -60,6 +60,7 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
 find_library(LIBGIT2 NAMES git2)
 find_library(NCURSES NAMES ncurses)
 find_library(PTHREAD NAMES pthread)
+find_library(TINFO   NAMES tinfo)
 
 if(NOT TREEE_NO_GIT AND ${LIBGIT2} STREQUAL "LIBGIT2-NOTFOUND")
   message("libgit2 not found")
@@ -73,6 +74,10 @@ if(${PTHREAD} STREQUAL "PTHREAD-NOTFOUND")
   message("pthread not found")
   message("please install pthread to build treee")
 endif()
+if(${TINFO} STREQUAL "TINFO-NOTFOUND")
+  message("tinfo not found")
+  message("please install tinfo to build treee")
+endif()
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
@@ -81,7 +86,7 @@ if (TREEE_NO_GIT)
 else()
   target_link_libraries(${PROJECT_NAME} ${LIBGIT2})
 endif()
-target_link_libraries(${PROJECT_NAME} ${NCURSES} ${PTHREAD})
+target_link_libraries(${PROJECT_NAME} ${NCURSES} ${PTHREAD} ${TINFO})
 
 target_compile_options(${PROJECT_NAME} PRIVATE
                        ${CMAKE_CXX_FLAGS}

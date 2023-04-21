@@ -21,10 +21,10 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.   ///
 ///////////////////////////////////////////////////////////////////////////// */
 
-#define PAIR_CYAN    1
-#define PAIR_MAGENTA 2
-#define PAIR_GREEN   3
-#define PAIR_ERROR   4
+#define PAIR_CYAN  1
+#define PAIR_BLACK 2
+#define PAIR_GREEN 3
+#define PAIR_ERROR 4
 
 namespace treee {
 

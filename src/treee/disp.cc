@@ -121,8 +121,8 @@ disp::repaint(settings &s, const vector<root> &roots) {
       // write the borders
       for (auto &&x : border_xs)
         if (x != f.depth * 2)
-          writech_bounded(BASEY, x - winx_, ACS_VLINE, PAIR_MAGENTA);
-      writech_bounded(BASEY, BASEX, branch_ch, PAIR_MAGENTA);
+          writech_bounded(BASEY, x - winx_, ACS_VLINE, PAIR_BLACK);
+      writech_bounded(BASEY, BASEX, branch_ch, PAIR_BLACK);
 
       // write the file name
       auto &&fname = f.path.filename().string();
