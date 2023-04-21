@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////////
 //   _
 //  | |_ _ __ ___  ___  ___   treee: an interactive file tree viewer
-//  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020 Justin Collier
+//  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020-2023 Justin Collier
 //  | |_| | |  __/  __/  __/
 //   \__|_|  \___|\___|\___|  - - - - - - - - - - - - - - - - - -
 //
@@ -11,7 +11,7 @@
 //    (at your option) any later version.
 //
 //    This program is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the internalied warranty of
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
 //    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //    GNU General Public License for more details.
 //                                                                             /
@@ -27,37 +27,39 @@ extern "C" {
 
 namespace treee {
 
-// set up global ncurses RAII instance
-static struct ncurses {
-  ncurses() {
-    initscr();
-    cbreak();
-    noecho();
-    nodelay(stdscr, TRUE);
-    keypad(stdscr, TRUE);
-    clear();
-    if (has_colors()) {
-      start_color();
-      use_default_colors();
-      init_pair(PAIR_CYAN, COLOR_CYAN, -1);
-      init_pair(PAIR_MAGENTA, COLOR_MAGENTA, -1);
-      init_pair(PAIR_GREEN, COLOR_GREEN, -1);
-      init_pair(PAIR_ERROR, COLOR_WHITE, COLOR_RED);
-    }
+void
+ncurses_init() {
+  initscr();
+  cbreak();
+  noecho();
+  nodelay(stdscr, TRUE);
+  keypad(stdscr, TRUE);
+  clear();
+  if (has_colors()) {
+    start_color();
+    use_default_colors();
+    init_pair(PAIR_CYAN, COLOR_CYAN, -1);
+    init_pair(PAIR_BLACK, COLOR_BLACK, -1);
+    init_pair(PAIR_GREEN, COLOR_GREEN, -1);
+    init_pair(PAIR_ERROR, COLOR_WHITE, COLOR_RED);
   }
-  ~ncurses() {
-    nocbreak();
-    echo();
-    nodelay(stdscr, FALSE);
-    keypad(stdscr, FALSE);
-    endwin();
-  }
-  ncurses(const ncurses &) = delete;
-  ncurses(ncurses &&)      = delete;
-} g_curses;
+}
+
+void
+ncurses_cleanup() {
+  nocbreak();
+  echo();
+  nodelay(stdscr, FALSE);
+  keypad(stdscr, FALSE);
+  endwin();
+}
 
 detail_::LINES::operator int() {
   return ::LINES;
+}
+
+detail_::COLS::operator int() {
+  return ::COLS;
 }
 
 detail_::A_BOLD_::operator unsigned() {
@@ -92,13 +94,13 @@ detail_::attroff::operator()(unsigned attr) {
 }
 
 void
-detail_::mvaddch::operator()(int x, int y, unsigned ch) {
-  mvaddch(x, y, ch);
+detail_::mvaddch::operator()(int y, int x, unsigned ch) {
+  mvaddch(y, x, ch);
 }
 
 void
-detail_::mvaddstr::operator()(int x, int y, const char *str) {
-  mvaddstr(x, y, str);
+detail_::mvaddstr::operator()(int y, int x, const char *str) {
+  mvaddstr(y, x, str);
 }
 
 void

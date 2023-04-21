@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////////
 //   _
 //  | |_ _ __ ___  ___  ___   treee: an interactive file tree viewer
-//  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020 Justin Collier
+//  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020-2023 Justin Collier
 //  | |_| | |  __/  __/  __/
 //   \__|_|  \___|\___|\___|  - - - - - - - - - - - - - - - - - -
 //
@@ -11,7 +11,7 @@
 //    (at your option) any later version.
 //
 //    This program is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the internalied warranty of
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
 //    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //    GNU General Public License for more details.
 //                                                                             /
@@ -51,6 +51,14 @@ const vector<root::file> &
 root::files() const noexcept {
   return files_;
 }
+int
+root::max_depth() const noexcept {
+  return max_depth_;
+}
+bool
+root::stopped_early() const noexcept {
+  return stopped_early_;
+}
 
 struct update_state {
   const fs::path &root_path;
@@ -59,6 +67,8 @@ struct update_state {
   const settings &s;
   bool found_diff;
   char pad_[7]{};
+  int max_depth{-1};
+  bool stopped_early{false};
 };
 
 static void
@@ -100,6 +110,12 @@ process_directory_entry(
 static void
 recurse_process_directories(
     update_state &o, const fs::path &cur_dir, int depth = 0) {
+  if (o.s.max_depth >= 0 && depth > o.s.max_depth) {
+    o.stopped_early = true;
+    return;
+  }
+  if (depth > o.max_depth)
+    o.max_depth = depth;
   try {
     auto children = vector<fs::directory_entry>{};
     {
@@ -150,6 +166,9 @@ root::update(settings &s) {
     state.found_diff = true;
     files_.erase(state.verifier, files_.end());
   }
+
+  max_depth_     = state.max_depth;
+  stopped_early_ = state.stopped_early;
 
   // returns true if any elements of files_ have changed
   return state.found_diff;

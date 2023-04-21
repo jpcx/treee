@@ -1,7 +1,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #    _
 #   | |_ _ __ ___  ___  ___   treee: interactive file tree viewer
-#   | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020 Justin Collier
+#   | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020-2023 Justin Collier
 #   | |_| | |  __/  __/  __/
 #    \__|_|  \___|\___|\___|  - - - - - - - - - - - - - - - - - -
 # 
@@ -11,7 +11,7 @@
 #     (at your option) any later version.
 # 
 #     This program is distributed in the hope that it will be useful,
-#     but WITHOUT ANY WARRANTY; without even the internalied warranty of
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
 #     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #     GNU General Public License for more details.
 #
@@ -21,7 +21,7 @@
 
 cmake_minimum_required(VERSION 3.0)
 project(treee
-        VERSION 0.2.1
+        VERSION 0.3.0
         DESCRIPTION "an interactive file tree viewer"
         HOMEPAGE_URL "https://github.com/jpcx/treee"
         LANGUAGES CXX)
@@ -60,6 +60,7 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
 find_library(LIBGIT2 NAMES git2)
 find_library(NCURSES NAMES ncurses)
 find_library(PTHREAD NAMES pthread)
+find_library(TINFO   NAMES tinfo)
 
 if(NOT TREEE_NO_GIT AND ${LIBGIT2} STREQUAL "LIBGIT2-NOTFOUND")
   message("libgit2 not found")
@@ -73,6 +74,10 @@ if(${PTHREAD} STREQUAL "PTHREAD-NOTFOUND")
   message("pthread not found")
   message("please install pthread to build treee")
 endif()
+if(${TINFO} STREQUAL "TINFO-NOTFOUND")
+  message("tinfo not found")
+  message("please install tinfo to build treee")
+endif()
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
@@ -81,7 +86,7 @@ if (TREEE_NO_GIT)
 else()
   target_link_libraries(${PROJECT_NAME} ${LIBGIT2})
 endif()
-target_link_libraries(${PROJECT_NAME} ${NCURSES} ${PTHREAD})
+target_link_libraries(${PROJECT_NAME} ${NCURSES} ${PTHREAD} ${TINFO})
 
 target_compile_options(${PROJECT_NAME} PRIVATE
                        ${CMAKE_CXX_FLAGS}
