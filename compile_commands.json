@@ -1,113 +1,119 @@
 [
-    {
-        "arguments": [
-            "/usr/local/bin/c++",
-            "-c",
-            "-I/home/user/projects/treee/src",
-            "-I/home/user/projects/treee/ext/ccutl/include",
-            "-O3",
-            "-std=c++17",
-            "-Wall",
-            "-Wextra",
-            "-pedantic",
-            "-o",
-            "CMakeFiles/treee.dir/src/treee/disp.cc.o",
-            "../src/treee/disp.cc"
-        ],
-        "directory": "/home/user/projects/treee/build",
-        "file": "../src/treee/disp.cc"
-    },
-    {
-        "arguments": [
-            "/usr/local/bin/c++",
-            "-c",
-            "-I/home/user/projects/treee/src",
-            "-I/home/user/projects/treee/ext/ccutl/include",
-            "-O3",
-            "-std=c++17",
-            "-Wall",
-            "-Wextra",
-            "-pedantic",
-            "-o",
-            "CMakeFiles/treee.dir/src/treee/git.cc.o",
-            "../src/treee/git.cc"
-        ],
-        "directory": "/home/user/projects/treee/build",
-        "file": "../src/treee/git.cc"
-    },
-    {
-        "arguments": [
-            "/usr/local/bin/c++",
-            "-c",
-            "-v",
-            "-o",
-            "CMakeFiles/cmTC_5bdae.dir/CMakeCXXCompilerABI.cpp.o",
-            "../../../../../../../usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
-        ],
-        "directory": "/home/user/projects/treee/build/CMakeFiles/CMakeTmp",
-        "file": "../../../../../../../usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
-    },
-    {
-        "arguments": [
-            "/usr/local/bin/c++",
-            "-c",
-            "-I/home/user/projects/treee/src",
-            "-I/home/user/projects/treee/ext/ccutl/include",
-            "-O3",
-            "-std=c++17",
-            "-Wall",
-            "-Wextra",
-            "-pedantic",
-            "-o",
-            "CMakeFiles/treee.dir/src/treee/root.cc.o",
-            "../src/treee/root.cc"
-        ],
-        "directory": "/home/user/projects/treee/build",
-        "file": "../src/treee/root.cc"
-    },
-    {
-        "arguments": [
-            "/usr/local/bin/c++",
-            "-c",
-            "-I/home/user/projects/treee/src",
-            "-I/home/user/projects/treee/ext/ccutl/include",
-            "-O3",
-            "-std=c++17",
-            "-Wall",
-            "-Wextra",
-            "-pedantic",
-            "-o",
-            "CMakeFiles/treee.dir/src/treee/ncurses.cc.o",
-            "../src/treee/ncurses.cc"
-        ],
-        "directory": "/home/user/projects/treee/build",
-        "file": "../src/treee/ncurses.cc"
-    },
-    {
-        "arguments": [
-            "/usr/local/bin/c++",
-            "-c",
-            "-I/home/user/projects/treee/src",
-            "-I/home/user/projects/treee/ext/ccutl/include",
-            "-O3",
-            "-std=c++17",
-            "-Wall",
-            "-Wextra",
-            "-pedantic",
-            "-o",
-            "CMakeFiles/treee.dir/src/main.cc.o",
-            "../src/main.cc"
-        ],
-        "directory": "/home/user/projects/treee/build",
-        "file": "../src/main.cc"
-    },
-    {
-        "arguments": [
-            "/usr/local/bin/c++",
-            "-c",
-            "CMakeCXXCompilerId.cpp"
-        ],
-        "directory": "/home/user/projects/treee/build/CMakeFiles/3.17.4/CompilerIdCXX",
-        "file": "CMakeCXXCompilerId.cpp"
-    }
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-c",
+      "CMakeCXXCompilerId.cpp"
+    ],
+    "directory": "/home/user/git/treee/build/CMakeFiles/3.25.2/CompilerIdCXX",
+    "file": "/home/user/git/treee/build/CMakeFiles/3.25.2/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-v",
+      "-c",
+      "-o",
+      "CMakeFiles/cmTC_40892.dir/CMakeCXXCompilerABI.cpp.o",
+      "/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
+    ],
+    "directory": "/home/user/git/treee/build/CMakeFiles/CMakeScratch/TryCompile-6zWMCo",
+    "file": "/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp",
+    "output": "/home/user/git/treee/build/CMakeFiles/CMakeScratch/TryCompile-6zWMCo/CMakeFiles/cmTC_40892.dir/CMakeCXXCompilerABI.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/user/git/treee/src",
+      "-I/home/user/git/treee/ext/ccutl/include",
+      "-O3",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-c",
+      "-o",
+      "CMakeFiles/treee.dir/src/main.cc.o",
+      "/home/user/git/treee/src/main.cc"
+    ],
+    "directory": "/home/user/git/treee/build",
+    "file": "/home/user/git/treee/src/main.cc",
+    "output": "/home/user/git/treee/build/CMakeFiles/treee.dir/src/main.cc.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/user/git/treee/src",
+      "-I/home/user/git/treee/ext/ccutl/include",
+      "-O3",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-c",
+      "-o",
+      "CMakeFiles/treee.dir/src/treee/disp.cc.o",
+      "/home/user/git/treee/src/treee/disp.cc"
+    ],
+    "directory": "/home/user/git/treee/build",
+    "file": "/home/user/git/treee/src/treee/disp.cc",
+    "output": "/home/user/git/treee/build/CMakeFiles/treee.dir/src/treee/disp.cc.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/user/git/treee/src",
+      "-I/home/user/git/treee/ext/ccutl/include",
+      "-O3",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-c",
+      "-o",
+      "CMakeFiles/treee.dir/src/treee/git.cc.o",
+      "/home/user/git/treee/src/treee/git.cc"
+    ],
+    "directory": "/home/user/git/treee/build",
+    "file": "/home/user/git/treee/src/treee/git.cc",
+    "output": "/home/user/git/treee/build/CMakeFiles/treee.dir/src/treee/git.cc.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/user/git/treee/src",
+      "-I/home/user/git/treee/ext/ccutl/include",
+      "-O3",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-c",
+      "-o",
+      "CMakeFiles/treee.dir/src/treee/ncurses.cc.o",
+      "/home/user/git/treee/src/treee/ncurses.cc"
+    ],
+    "directory": "/home/user/git/treee/build",
+    "file": "/home/user/git/treee/src/treee/ncurses.cc",
+    "output": "/home/user/git/treee/build/CMakeFiles/treee.dir/src/treee/ncurses.cc.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-I/home/user/git/treee/src",
+      "-I/home/user/git/treee/ext/ccutl/include",
+      "-O3",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-c",
+      "-o",
+      "CMakeFiles/treee.dir/src/treee/root.cc.o",
+      "/home/user/git/treee/src/treee/root.cc"
+    ],
+    "directory": "/home/user/git/treee/build",
+    "file": "/home/user/git/treee/src/treee/root.cc",
+    "output": "/home/user/git/treee/build/CMakeFiles/treee.dir/src/treee/root.cc.o"
+  }
 ]

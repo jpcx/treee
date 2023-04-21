@@ -3,7 +3,7 @@
 /* /////////////////////////////////////////////////////////////////////////////
 //   _
 //  | |_ _ __ ___  ___  ___   treee: an interactive file tree viewer
-//  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020 Justin Collier
+//  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020-2023 Justin Collier
 //  | |_| | |  __/  __/  __/
 //   \__|_|  \___|\___|\___|  - - - - - - - - - - - - - - - - - -
 //
@@ -13,7 +13,7 @@
 //    (at your option) any later version.
 //
 //    This program is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the internalied warranty of
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
 //    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //    GNU General Public License for more details.
 //                                                                             /
@@ -28,8 +28,14 @@
 
 namespace treee {
 
+void ncurses_init();
+void ncurses_cleanup();
+
 namespace detail_ {
 struct LINES {
+  operator int();
+};
+struct COLS {
   operator int();
 };
 struct A_BOLD_ {
@@ -58,11 +64,11 @@ struct attroff {
 };
 struct mvaddch {
   void
-  operator()(int x, int y, unsigned ch);
+  operator()(int y, int x, unsigned ch);
 };
 struct mvaddstr {
   void
-  operator()(int x, int y, const char *str);
+  operator()(int y, int x, const char *str);
 };
 struct timeout {
   void
@@ -80,6 +86,7 @@ struct clear {
 
 #ifndef __NCURSES_H
 inline detail_::LINES LINES;
+inline detail_::COLS COLS;
 inline detail_::A_BOLD_ A_BOLD;
 inline detail_::ACS_VLINE_ ACS_VLINE;
 inline detail_::ACS_LLCORNER_ ACS_LLCORNER;

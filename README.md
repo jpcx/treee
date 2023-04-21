@@ -3,7 +3,7 @@
 ```
  _
 | |_ _ __ ___  ___  ___   treee: an interactive file tree viewer
-| __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020 Justin Collier
+| __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020-2023 Justin Collier
 | |_| | |  __/  __/  __/
  \__|_|  \___|\___|\___|  - - - - - - - - - - - - - - - - - -
 ```
@@ -50,6 +50,9 @@ treee . some_dir ../another_dir
 
 # to exclude patterns (ECMAScript Regex)
 treee -I thirdparty|assets
+
+# to set a max descent level
+treee -L 3
 ```
 
 ## Controls
@@ -61,6 +64,8 @@ _[hold shift for fast motion]_
 press `.` to toggle hidden file display  
 press `g` to toggle gitignored file display  
 press `i` to toggle pattern-ignored file display  
+press `+` to increase descent level
+press `-` to decrease descent level
 
 press `q` to exit
 
@@ -77,7 +82,7 @@ Contribution is welcome! Please make a pull request.
 ## [License](LICENSE)
 
 ```
-Copyright (C) 2020 Justin Collier
+Copyright (C) 2020-2023 Justin Collier
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -85,7 +90,7 @@ Copyright (C) 2020 Justin Collier
   (at your option) any later version.
 
   This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the internalied warranty of
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 

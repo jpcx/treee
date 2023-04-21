@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////////
 //   _
 //  | |_ _ __ ___  ___  ___   treee: an interactive file tree viewer
-//  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020 Justin Collier
+//  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020-2023 Justin Collier
 //  | |_| | |  __/  __/  __/
 //   \__|_|  \___|\___|\___|  - - - - - - - - - - - - - - - - - -
 //
@@ -11,7 +11,7 @@
 //    (at your option) any later version.
 //
 //    This program is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the internalied warranty of
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
 //    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //    GNU General Public License for more details.
 //                                                                             /
@@ -39,10 +39,19 @@ writestr_bounded(
   if (color != 0)
     attron(COLOR_PAIR(color));
   if (x >= 0) {
-    mvaddstr(y, x, text);
+    for (; x < COLS && *text; ++x, ++text)
+      mvaddch(y, x, *text);
   } else if (static_cast<size_t>(-x + 2) < length) {
     mvaddch(y, 0, '<');
-    mvaddstr(y, 2, &text[-x + 2]);
+    mvaddch(y, 1, ' ');
+    text += -x + 2;
+    x = 2;
+    for (; x < COLS && *text; ++x, ++text)
+      mvaddch(y, x, *text);
+  }
+  if (x >= COLS && *text) {
+    mvaddch(y, COLS - 2, ' ');
+    mvaddch(y, COLS - 1, '>');
   }
   if (color != 0)
     attroff(COLOR_PAIR(color));
@@ -278,6 +287,52 @@ disp::check_input(settings &s, vector<root> &roots) {
   } break;
   case '.': {
     UPDATE_IGNORED(read_hidden);
+  } break;
+  case '+': {
+    bool stopped_early = false;
+    {
+      std::scoped_lock<std::mutex> l{s.roots_access_mutex};
+      for (auto &&v : roots)
+        if (v.stopped_early()) {
+          stopped_early = true;
+          break;
+        }
+    }
+    if (s.max_depth == -1) {
+      std::scoped_lock<std::mutex> l{s.roots_access_mutex};
+      for (auto &&v : roots)
+        if (v.max_depth() > s.max_depth)
+          s.max_depth = v.max_depth();
+    } else if (stopped_early) {
+      ++s.max_depth;
+      {
+        std::scoped_lock<std::mutex> l{s.roots_access_mutex};
+        for (auto &&v : roots)
+          v.update(s);
+        for (auto &&v : roots)
+          v.update(s);
+      }
+      repaint(s, roots);
+    }
+  } break;
+  case '-': {
+    if (s.max_depth == -1) {
+      std::scoped_lock<std::mutex> l{s.roots_access_mutex};
+      for (auto &&v : roots)
+        if (v.max_depth() > s.max_depth)
+          s.max_depth = v.max_depth();
+    }
+    if (s.max_depth > 0) {
+      --s.max_depth;
+      {
+        std::scoped_lock<std::mutex> l{s.roots_access_mutex};
+        for (auto &&v : roots)
+          v.update(s);
+      }
+      repaint(s, roots);
+    }
+    if (winy_ >= lines_)
+      winy_ = lines_ > LINES ? lines_ - LINES : 0;
   } break;
   case 'q': return true;
   }

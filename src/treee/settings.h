@@ -3,7 +3,7 @@
 /* /////////////////////////////////////////////////////////////////////////////
 //   _
 //  | |_ _ __ ___  ___  ___   treee: an interactive file tree viewer
-//  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020 Justin Collier
+//  | __| '__/ _ \/ _ \/ _ \  Copyright (C) 2020-2023 Justin Collier
 //  | |_| | |  __/  __/  __/
 //   \__|_|  \___|\___|\___|  - - - - - - - - - - - - - - - - - -
 //
@@ -13,7 +13,7 @@
 //    (at your option) any later version.
 //
 //    This program is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the internalied warranty of
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
 //    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //    GNU General Public License for more details.
 //                                                                             /
@@ -36,6 +36,7 @@ struct settings {
 #ifndef TREEE_NO_GIT
   std::atomic<bool> read_gitignored = false;
 #endif
+  int max_depth = -1;
   char pad_[5];
 };
 

@@ -1,6 +1,19 @@
 # Changelog
 
-## [Upcoming](https://github.com/jpcx/treee/compare/0.2.1...devel)
+## [Upcoming](https://github.com/jpcx/treee/compare/0.3.0...devel)
+
+## [0.3.0](https://github.com/jpcx/treee/releases/tag/0.3.0)
+
+### Changed
+
+- fixed issue with mvaddstr wrapping
+- added error handling for arguments
+- added libtinfo dependency necessary for some systems
+
+### Added
+
+- added -L descent level and -h
+- added +/- controlls for level control
 
 ## [0.2.1](https://github.com/jpcx/treee/releases/tag/0.2.1)
 
